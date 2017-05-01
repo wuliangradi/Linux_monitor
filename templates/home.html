@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+        <title>Dashboard</title>
+        <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+  </head>
+
+<body>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">数据监控 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">开发机监控</a></li>
+            <li><a href="#">集群资源监控</a></li>
+            <li><a href="">数据接口</a></li>
+            <li><a href="">任务运行状态</a></li>
+            <li><a href="">To Do List</a></li>
+          </ul>
+        </div>
+
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+      </div>
+  </div>
+
+  </body>
+</html>
