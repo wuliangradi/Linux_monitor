@@ -113,7 +113,7 @@ def home():
              {"name": "show", "url": "show_entries"},
             ]
 
-    return render_template('layout.html')
+    return render_template('home.html')
 
 if __name__ == '__main__':
     app.run()

@@ -25,9 +25,9 @@
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
               {% if not session.logged_in %}
-                  <li><a href="{{ url_for('login') }}">log in</a></li>
+                  <li><a href="{{ url_for('login') }}">Log in</a></li>
               {% else %}
-                  <li><a href="{{ url_for('logout') }}">log out</a></li>
+                  <li><a href="{{ url_for('logout') }}">Log out</a></li>
               {% endif %}
           </ul>
           <form class="navbar-form navbar-right">
@@ -55,11 +55,11 @@
 
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Dashboard</h1>
+              {% block body %}{% endblock %}
+
         </div>
       </div>
   </div>
-
-  {% block body %}{% endblock %}
 
 
 <footer class="footer">
