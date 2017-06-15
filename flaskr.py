@@ -10,6 +10,7 @@
 
 import os
 from sqlite3 import dbapi2 as sqlite3
+
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
 
@@ -111,18 +112,30 @@ def logout():
 def home():
     links = [{"name": "login", "url": "login"},
              {"name": "show", "url": "show_entries"},
-            ]
-    print request.method
+             ]
+    return render_template("home.html")
+
+
+@app.route('/data_monitor', methods=['GET', 'POST'])
+def data_monitor():
+    print request.method, request.form.get('query', None)
     if request.method == 'GET':
         result = {}
         return render_template("home.html", result=result)
-    if request.method == 'POST' and request.form.get('query', None) == "查询":
-        print "sss"
-        stock_no = request.form['storkcode']
-        result = {"stock_name":"baidu"}
-        return render_template('home.html', result=result)
+    if request.method == 'POST' and request.form.get('query', None) == u"监控查询":
+        baseid = request.form['baseid']
+        temid = request.form['temid']
+        result = {"baseid": baseid, "temid": temid}
+        return render_template('home.html', result_query=result)
+    if request.method == 'POST' and request.form.get('query', None) == u"监控测试":
+        stock_no = request.form['baseid']
+        print stock_no
+        result = {"baseid": "baidu"}
+        print request.form.getlist('user')
+        return render_template('home.html', result_insert=result)
     else:
         print ">>>>"
+
 
 if __name__ == '__main__':
     app.run()
