@@ -112,8 +112,17 @@ def home():
     links = [{"name": "login", "url": "login"},
              {"name": "show", "url": "show_entries"},
             ]
-
-    return render_template('home.html')
+    print request.method
+    if request.method == 'GET':
+        result = {}
+        return render_template("home.html", result=result)
+    if request.method == 'POST' and request.form.get('query', None) == "查询":
+        print "sss"
+        stock_no = request.form['storkcode']
+        result = {"stock_name":"baidu"}
+        return render_template('home.html', result=result)
+    else:
+        print ">>>>"
 
 if __name__ == '__main__':
     app.run()
