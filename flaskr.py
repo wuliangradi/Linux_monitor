@@ -7,10 +7,11 @@
     :copyright: (c) 2015 by Armin Ronacher.
     :license: BSD, see LICENSE for more details.
 """
-
+import sys
+sys.path.append('/home/users/wuliang09/project/monitor/monitor_item_check.py')
 import os
 from sqlite3 import dbapi2 as sqlite3
-
+from monitor_item_check import data_check
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
 
@@ -125,7 +126,8 @@ def data_monitor():
     if request.method == 'POST' and request.form.get('query', None) == u"监控查询":
         baseid = request.form['baseid']
         temid = request.form['temid']
-        result = {"baseid": baseid, "temid": temid}
+        re = data_check(baseid, temid, "拥抱的似水年华")
+        result = {"baseid": re[0], "temid": re[1], "description":re[2], "table_name":re[3], "user":re[4], "state":re[5]}
         return render_template('home.html', result_query=result)
     if request.method == 'POST' and request.form.get('query', None) == u"监控测试":
         stock_no = request.form['baseid']
@@ -138,4 +140,4 @@ def data_monitor():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
