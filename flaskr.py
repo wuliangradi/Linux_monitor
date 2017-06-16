@@ -121,11 +121,11 @@ def home():
 
 @app.route('/data_monitor', methods=['GET', 'POST'])
 def data_monitor():
-    print request.method, request.form.get('query', None)
+    print request.method, request.form.get('query', None).encode("utf-8")
     if request.method == 'GET':
         result = {}
         return render_template("home.html", result=result)
-    if request.method == 'POST' and request.form.get('query', None) == u"监控查询":
+    if request.method == 'POST' and request.form.get('query', None).encode("utf-8") == u"监控查询":
         baseid = request.form['baseid']
         temid = request.form['temid']
         re = data_check(baseid, temid, "拥抱的似水年华")
