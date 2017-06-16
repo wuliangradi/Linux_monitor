@@ -8,7 +8,7 @@
     :license: BSD, see LICENSE for more details.
 """
 import sys
-sys.path.append('/home/users/wuliang09/project/monitor/monitor_item_check.py')
+sys.path.append('/home/users/wuliang09/project/monitor/')
 import os
 from sqlite3 import dbapi2 as sqlite3
 from monitor_item_check import data_check
