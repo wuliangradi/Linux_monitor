@@ -15,6 +15,8 @@ from monitor_item_check import data_check
 from flask import Flask, request, session, g, redirect, url_for, abort, \
     render_template, flash
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
 # create our little application :)
 app = Flask(__name__)
 
